@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 require("dotenv").config()
-require("../model/index")
+require("./model/index")
 
 app.get("/",()=>{
     console.log("alive")

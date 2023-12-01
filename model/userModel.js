@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull : false
       },
       currentOrgNum: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull:true
       }
 
