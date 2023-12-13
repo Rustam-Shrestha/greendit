@@ -24,7 +24,9 @@ exports.createOrganization=async(req,res,next)=>{
     orgNumber = genRandomNum();
     // gibing a primary key to find a user 
     const userId = req.userId
-
+    console.log(userId)
+    // find data of above user
+    
     // find data of above userId 
     const user = await users.findByPk(userId)
     // destructuring all the input field values to access it right away
@@ -45,5 +47,11 @@ exports.createOrganization=async(req,res,next)=>{
         type: QueryTypes.INSERT,
         replacements:[organizationName, organizationEmail, organizationPhoneNumber, organizationAddress, organizationPanNumber, organizationVatNumber]
     })
+
+    // setting generated random number as current org number 
+    //user.<tablename>
+    user.currentOrgNum = orgNumber;
+    //asynchronously save to user database
+    await user.save();
     res.send("successfuly sent")
 }

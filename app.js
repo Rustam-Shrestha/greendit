@@ -4,12 +4,15 @@ const express = require("express");
 const app = express();
 const passport = require("passport")
 const { users } = require("./model/index")
+const cookieParser= require("cookie-parser")
 require("dotenv").config()
 require("./model/index")
+
 //requiring router that we have made in routes/organizationRoute
 const organizationRoute = require("./routes/organizationRoute")
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
 const generateToken = require("./services/generateToken");
 const { route } = require("./routes/organizationRoute");
 // google login begins here
